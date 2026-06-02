@@ -103,8 +103,8 @@ export default function Home() {
       {/* Header */}
       <div className="flex justify-between items-center mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-white">Sistema Supervisorio Industrial</h1>
-          <p className="text-gray-400 text-sm">OPC-UA → Node-RED → Backend → Frontend</p>
+          <h1 className="text-2xl font-bold text-slate-50">Sistema Supervisorio Industrial</h1>
+          <p className="text-slate-400 text-sm">OPC-UA → Node-RED → Backend → Frontend</p>
         </div>
         <div className="flex items-center gap-4">
           <div className={`flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold ${
@@ -113,13 +113,13 @@ export default function Home() {
             <span className={`w-2 h-2 rounded-full ${connected ? "bg-green-400 animate-pulse" : "bg-red-400"}`} />
             {connected ? "Conectado" : "Desconectado"}
           </div>
-          <Link href="/devices" className="text-blue-400 hover:underline text-sm">Gerenciar Dispositivos</Link>
+          <Link href="/devices" className="text-cyan-400 hover:underline text-sm">Gerenciar Dispositivos</Link>
         </div>
       </div>
 
       {loading ? (
         <div className="flex items-center justify-center h-64">
-          <p className="text-gray-400 text-lg">Conectando ao sistema...</p>
+          <p className="text-slate-400 text-lg">Conectando ao sistema...</p>
         </div>
       ) : (
         <>
@@ -136,11 +136,11 @@ export default function Home() {
                       <p className={`font-bold ${a.priority === "ALTA" ? "text-red-400" : "text-yellow-400"}`}>
                         ALARME {a.type} - {a.tag}
                       </p>
-                      <p className="text-gray-400 text-sm">{a.message}</p>
+                      <p className="text-slate-400 text-sm">{a.message}</p>
                     </div>
                   </div>
                   <button onClick={() => handleAck(a.id)}
-                    className="bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg text-sm transition">
+                    className="bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded-lg text-sm transition">
                     Reconhecer
                   </button>
                 </div>
@@ -151,23 +151,23 @@ export default function Home() {
           {/* Real-time Values */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             {/* Temperature */}
-            <div className="bg-gray-800 p-6 rounded-xl border border-gray-700">
+            <div className="bg-slate-900 p-6 rounded-xl border border-slate-800">
               <div className="flex justify-between items-start mb-2">
-                <p className="text-gray-400 text-sm uppercase tracking-wide">Temperatura</p>
-                <span className="text-gray-600 text-xs">
+                <p className="text-slate-400 text-sm uppercase tracking-wide">Temperatura</p>
+                <span className="text-slate-500 text-xs">
                   {temp ? new Date(temp.timestamp).toLocaleTimeString("pt-BR") : "--:--:--"}
                 </span>
               </div>
               <p className={`text-5xl font-bold mt-2 ${temp ? getValueColor("Temperatura", Number(temp.valor)) : "text-gray-600"}`}>
                 {temp ? Number(temp.valor).toFixed(1) : "---"}
-                <span className="text-xl text-gray-500 ml-1">\u00b0C</span>
+                <span className="text-xl text-slate-500 ml-1">\u00b0C</span>
               </p>
-              <div className="flex justify-between text-xs text-gray-600 mt-3">
+              <div className="flex justify-between text-xs text-slate-500 mt-3">
                 <span>Min: 10\u00b0C</span>
                 <span>Max: 80\u00b0C</span>
               </div>
               {temp && (
-                <div className="mt-3 bg-gray-900 rounded-full h-2 overflow-hidden">
+                <div className="mt-3 bg-slate-950 rounded-full h-2 overflow-hidden">
                   <div className={`h-full rounded-full transition-all duration-500 ${
                     Number(temp.valor) > 80 ? "bg-red-500" : Number(temp.valor) > 60 ? "bg-yellow-500" : "bg-green-500"
                   }`} style={{ width: `${Math.min(100, Math.max(0, (Number(temp.valor) / 100) * 100))}%` }} />
@@ -176,23 +176,23 @@ export default function Home() {
             </div>
 
             {/* Pressure */}
-            <div className="bg-gray-800 p-6 rounded-xl border border-gray-700">
+            <div className="bg-slate-900 p-6 rounded-xl border border-slate-800">
               <div className="flex justify-between items-start mb-2">
-                <p className="text-gray-400 text-sm uppercase tracking-wide">Press\u00e3o</p>
-                <span className="text-gray-600 text-xs">
+                <p className="text-slate-400 text-sm uppercase tracking-wide">Press\u00e3o</p>
+                <span className="text-slate-500 text-xs">
                   {press ? new Date(press.timestamp).toLocaleTimeString("pt-BR") : "--:--:--"}
                 </span>
               </div>
               <p className={`text-5xl font-bold mt-2 ${press ? getValueColor("Press\u00e3o", Number(press.valor)) : "text-gray-600"}`}>
                 {press ? Number(press.valor).toFixed(2) : "---"}
-                <span className="text-xl text-gray-500 ml-1">bar</span>
+                <span className="text-xl text-slate-500 ml-1">bar</span>
               </p>
-              <div className="flex justify-between text-xs text-gray-600 mt-3">
+              <div className="flex justify-between text-xs text-slate-500 mt-3">
                 <span>Min: 0.5 bar</span>
                 <span>Max: 5.0 bar</span>
               </div>
               {press && (
-                <div className="mt-3 bg-gray-900 rounded-full h-2 overflow-hidden">
+                <div className="mt-3 bg-slate-950 rounded-full h-2 overflow-hidden">
                   <div className={`h-full rounded-full transition-all duration-500 ${
                     Number(press.valor) > 5 ? "bg-red-500" : Number(press.valor) > 3.5 ? "bg-yellow-500" : "bg-green-500"
                   }`} style={{ width: `${Math.min(100, Math.max(0, (Number(press.valor) / 6) * 100))}%` }} />
@@ -201,10 +201,10 @@ export default function Home() {
             </div>
 
             {/* Running Status */}
-            <div className="bg-gray-800 p-6 rounded-xl border border-gray-700">
+            <div className="bg-slate-900 p-6 rounded-xl border border-slate-800">
               <div className="flex justify-between items-start mb-2">
-                <p className="text-gray-400 text-sm uppercase tracking-wide">Status do Processo</p>
-                <span className="text-gray-600 text-xs">
+                <p className="text-slate-400 text-sm uppercase tracking-wide">Status do Processo</p>
+                <span className="text-slate-500 text-xs">
                   {running ? new Date(running.timestamp).toLocaleTimeString("pt-BR") : "--:--:--"}
                 </span>
               </div>
@@ -220,19 +220,19 @@ export default function Home() {
                   <p className={`text-3xl font-bold ${running?.valor ? "text-green-400" : "text-red-400"}`}>
                     {running ? (running.valor ? "LIGADO" : "DESLIGADO") : "---"}
                   </p>
-                  <p className="text-gray-500 text-sm">
+                  <p className="text-slate-500 text-sm">
                     {running?.valor ? "Processo em execu\u00e7\u00e3o" : "Processo parado"}
                   </p>
                 </div>
               </div>
               {status && (
-                <div className="mt-4 pt-4 border-t border-gray-700 grid grid-cols-2 gap-2 text-sm">
+                <div className="mt-4 pt-4 border-t border-slate-800 grid grid-cols-2 gap-2 text-sm">
                   <div>
-                    <p className="text-gray-500">Leituras</p>
+                    <p className="text-slate-500">Leituras</p>
                     <p className="text-white font-bold">{status.totalReadings}</p>
                   </div>
                   <div>
-                    <p className="text-gray-500">Alarmes</p>
+                    <p className="text-slate-500">Alarmes</p>
                     <p className={`font-bold ${status.activeAlarms > 0 ? "text-red-400" : "text-green-400"}`}>
                       {status.activeAlarms}
                     </p>
@@ -245,7 +245,7 @@ export default function Home() {
           {/* Trend Charts */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
             {/* Temperature Chart */}
-            <div className="bg-gray-800 p-5 rounded-xl border border-gray-700">
+            <div className="bg-slate-900 p-5 rounded-xl border border-slate-800">
               <h2 className="text-lg font-bold text-white mb-4">Tendencia - Temperatura (\u00b0C)</h2>
               {tempChartData.length > 0 ? (
                 <ResponsiveContainer width="100%" height={250}>
@@ -271,7 +271,7 @@ export default function Home() {
             </div>
 
             {/* Pressure Chart */}
-            <div className="bg-gray-800 p-5 rounded-xl border border-gray-700">
+            <div className="bg-slate-900 p-5 rounded-xl border border-slate-800">
               <h2 className="text-lg font-bold text-white mb-4">Tendencia - Press\u00e3o (bar)</h2>
               {pressChartData.length > 0 ? (
                 <ResponsiveContainer width="100%" height={250}>
@@ -299,19 +299,19 @@ export default function Home() {
 
           {/* Alarm History */}
           {alarms.length > 0 && (
-            <div className="bg-gray-800 p-5 rounded-xl border border-gray-700 mb-8">
+            <div className="bg-slate-900 p-5 rounded-xl border border-slate-800 mb-8">
               <h2 className="text-lg font-bold text-white mb-4">Alarmes</h2>
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-sm">
                   <thead>
                     <tr className="border-b border-gray-700">
-                      <th className="py-2 px-3 text-gray-400">Prioridade</th>
-                      <th className="py-2 px-3 text-gray-400">Tag</th>
-                      <th className="py-2 px-3 text-gray-400">Tipo</th>
-                      <th className="py-2 px-3 text-gray-400">Mensagem</th>
-                      <th className="py-2 px-3 text-gray-400">Valor</th>
-                      <th className="py-2 px-3 text-gray-400">Data/Hora</th>
-                      <th className="py-2 px-3 text-gray-400">Status</th>
+                      <th className="py-2 px-3 text-slate-400">Prioridade</th>
+                      <th className="py-2 px-3 text-slate-400">Tag</th>
+                      <th className="py-2 px-3 text-slate-400">Tipo</th>
+                      <th className="py-2 px-3 text-slate-400">Mensagem</th>
+                      <th className="py-2 px-3 text-slate-400">Valor</th>
+                      <th className="py-2 px-3 text-slate-400">Data/Hora</th>
+                      <th className="py-2 px-3 text-slate-400">Status</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -324,9 +324,9 @@ export default function Home() {
                         </td>
                         <td className="py-2 px-3 text-white">{a.tag}</td>
                         <td className="py-2 px-3 text-white">{a.type}</td>
-                        <td className="py-2 px-3 text-gray-400">{a.message}</td>
+                        <td className="py-2 px-3 text-slate-400">{a.message}</td>
                         <td className="py-2 px-3 text-white font-mono">{a.value}</td>
-                        <td className="py-2 px-3 text-gray-400">{new Date(a.timestamp).toLocaleString("pt-BR")}</td>
+                        <td className="py-2 px-3 text-slate-400">{new Date(a.timestamp).toLocaleString("pt-BR")}</td>
                         <td className="py-2 px-3">
                           {a.acknowledged ? (
                             <span className="text-green-400 text-xs">Reconhecido</span>
@@ -347,9 +347,9 @@ export default function Home() {
 
           {/* System Info */}
           {!connected && (
-            <div className="bg-gray-800 p-8 rounded-xl border border-red-500/30 text-center">
+            <div className="bg-slate-900 p-8 rounded-xl border border-rose-500/30 text-center">
               <p className="text-red-400 font-bold text-lg mb-2">Backend IoT Desconectado</p>
-              <p className="text-gray-400 text-sm mb-4">
+              <p className="text-slate-400 text-sm mb-4">
                 Certifique-se que o pipeline esta rodando:
               </p>
               <div className="text-left max-w-md mx-auto text-sm text-gray-500 space-y-1">

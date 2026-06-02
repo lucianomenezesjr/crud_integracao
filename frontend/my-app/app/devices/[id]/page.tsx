@@ -135,33 +135,33 @@ export default function DeviceDetailPage({ params }: { params: Promise<{ id: str
     }
   };
 
-  if (loading) return <div className="p-6 text-gray-400">Carregando...</div>;
+  if (loading) return <div className="p-6 text-slate-400">Carregando...</div>;
   if (!device) return <div className="p-6 text-red-400">Dispositivo não encontrado</div>;
 
   const statusColor = device.status?.toLowerCase() === "online" ? "text-green-400" : device.status?.toLowerCase() === "offline" ? "text-red-400" : "text-yellow-400";
 
   return (
     <div className="p-6">
-      <Link href="/devices" className="text-blue-400 hover:underline text-sm mb-4 inline-block">&larr; Voltar</Link>
+      <Link href="/devices" className="text-cyan-400 hover:underline text-sm mb-4 inline-block">&larr; Voltar</Link>
 
       {error && (
         <div className="bg-red-500/20 border border-red-500 text-red-300 p-3 rounded mb-4 text-sm">{error}</div>
       )}
 
       {/* Device Info */}
-      <div className="bg-gray-800 p-6 rounded-xl mb-6">
+      <div className="bg-slate-900 p-6 rounded-xl mb-6 border border-slate-800">
         <div className="flex justify-between items-start">
           <div>
-            <h1 className="text-2xl font-bold text-white">{device.name}</h1>
-            {device.description && <p className="text-gray-400 mt-1">{device.description}</p>}
+            <h1 className="text-2xl font-bold text-slate-50">{device.name}</h1>
+            {device.description && <p className="text-slate-400 mt-1">{device.description}</p>}
           </div>
           <span className={`font-bold ${statusColor}`}>{device.status}</span>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4 text-sm">
-          {device.serialNumber && <div><span className="text-gray-500">S/N:</span> <span className="text-gray-300">{device.serialNumber}</span></div>}
-          {device.protocol && <div><span className="text-gray-500">Protocolo:</span> <span className="text-gray-300">{device.protocol}</span></div>}
-          {device.ipAddress && <div><span className="text-gray-500">IP:</span> <span className="text-gray-300">{device.ipAddress}{device.port ? `:${device.port}` : ""}</span></div>}
-          <div><span className="text-gray-500">Autorização:</span> <span className="text-gray-300">{device.requiresAuthorization ? "Sim" : "Não"}</span></div>
+          {device.serialNumber && <div><span className="text-slate-500">S/N:</span> <span className="text-slate-300">{device.serialNumber}</span></div>}
+          {device.protocol && <div><span className="text-slate-500">Protocolo:</span> <span className="text-slate-300">{device.protocol}</span></div>}
+          {device.ipAddress && <div><span className="text-slate-500">IP:</span> <span className="text-slate-300">{device.ipAddress}{device.port ? `:${device.port}` : ""}</span></div>}
+          <div><span className="text-slate-500">Autorização:</span> <span className="text-slate-300">{device.requiresAuthorization ? "Sim" : "Não"}</span></div>
         </div>
       </div>
 
@@ -169,59 +169,59 @@ export default function DeviceDetailPage({ params }: { params: Promise<{ id: str
         {/* Sensors Section */}
         <div>
           <div className="flex justify-between items-center mb-3">
-            <h2 className="text-xl font-bold text-white">Sensores</h2>
+            <h2 className="text-xl font-bold text-slate-50">Sensores</h2>
             <button onClick={() => setShowSensorForm(!showSensorForm)}
-              className="bg-blue-600 hover:bg-blue-500 text-white px-3 py-1 rounded text-sm font-bold transition">
+              className="bg-cyan-600 hover:bg-cyan-500 text-white px-3 py-1 rounded text-sm font-bold transition">
               + Sensor
             </button>
           </div>
 
           {showSensorForm && (
-            <form onSubmit={handleCreateSensor} className="bg-gray-800 p-4 rounded-xl mb-4 flex flex-col gap-2">
+            <form onSubmit={handleCreateSensor} className="bg-slate-900 p-4 rounded-xl mb-4 flex flex-col gap-2 border border-slate-800">
               <input type="text" placeholder="Nome *" value={sensorForm.name}
                 onChange={(e) => setSensorForm({ ...sensorForm, name: e.target.value })}
-                className="bg-gray-700 text-white px-3 py-2 rounded-lg outline-none focus:ring-2 focus:ring-blue-500" required />
+                className="bg-slate-800 text-slate-100 px-3 py-2 rounded-lg outline-none border border-slate-700 focus:ring-2 focus:ring-cyan-500" required />
               <input type="text" placeholder="Tipo" value={sensorForm.type}
                 onChange={(e) => setSensorForm({ ...sensorForm, type: e.target.value })}
-                className="bg-gray-700 text-white px-3 py-2 rounded-lg outline-none focus:ring-2 focus:ring-blue-500" />
+                className="bg-slate-800 text-slate-100 px-3 py-2 rounded-lg outline-none border border-slate-700 focus:ring-2 focus:ring-cyan-500" />
               <input type="text" placeholder="Unidade" value={sensorForm.unit}
                 onChange={(e) => setSensorForm({ ...sensorForm, unit: e.target.value })}
-                className="bg-gray-700 text-white px-3 py-2 rounded-lg outline-none focus:ring-2 focus:ring-blue-500" />
+                className="bg-slate-800 text-slate-100 px-3 py-2 rounded-lg outline-none border border-slate-700 focus:ring-2 focus:ring-cyan-500" />
               <div className="flex gap-2">
                 <input type="number" step="any" placeholder="Min" value={sensorForm.minValue}
                   onChange={(e) => setSensorForm({ ...sensorForm, minValue: e.target.value })}
-                  className="bg-gray-700 text-white px-3 py-2 rounded-lg outline-none focus:ring-2 focus:ring-blue-500 flex-1" />
+                  className="bg-slate-800 text-slate-100 px-3 py-2 rounded-lg outline-none border border-slate-700 focus:ring-2 focus:ring-cyan-500 flex-1" />
                 <input type="number" step="any" placeholder="Max" value={sensorForm.maxValue}
                   onChange={(e) => setSensorForm({ ...sensorForm, maxValue: e.target.value })}
-                  className="bg-gray-700 text-white px-3 py-2 rounded-lg outline-none focus:ring-2 focus:ring-blue-500 flex-1" />
+                  className="bg-slate-800 text-slate-100 px-3 py-2 rounded-lg outline-none border border-slate-700 focus:ring-2 focus:ring-cyan-500 flex-1" />
               </div>
-              <button type="submit" className="bg-green-600 hover:bg-green-500 text-white px-4 py-2 rounded-lg font-bold transition">
+              <button type="submit" className="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-lg font-bold transition">
                 Criar Sensor
               </button>
             </form>
           )}
 
           {sensors.length === 0 ? (
-            <p className="text-gray-500 text-sm">Nenhum sensor cadastrado.</p>
+            <p className="text-slate-500 text-sm">Nenhum sensor cadastrado.</p>
           ) : (
             <div className="space-y-3">
               {sensors.map((s) => (
-                <div key={s.id} className="bg-gray-800 p-4 rounded-xl border border-gray-700">
+                <div key={s.id} className="bg-slate-900 p-4 rounded-xl border border-slate-800">
                   <div className="flex justify-between items-center">
                     <div>
-                      <h3 className="text-white font-bold">{s.name}</h3>
-                      <p className="text-gray-400 text-sm">{s.type} {s.unit ? `(${s.unit})` : ""}</p>
+                      <h3 className="text-slate-50 font-bold">{s.name}</h3>
+                      <p className="text-slate-400 text-sm">{s.type} {s.unit ? `(${s.unit})` : ""}</p>
                     </div>
                     <div className="text-right">
                       <p className="text-green-400 font-bold text-lg">{s.currentValue ?? "—"}</p>
-                      <p className="text-gray-500 text-xs">
+                      <p className="text-slate-500 text-xs">
                         {s.minValue != null && s.maxValue != null ? `${s.minValue} ~ ${s.maxValue}` : ""}
                       </p>
                     </div>
                   </div>
                   <div className="flex gap-2 mt-3">
                     <button onClick={() => { setSelectedSensor(s.id); loadSensorData(s.id); }}
-                      className="bg-purple-600 hover:bg-purple-500 text-white px-3 py-1 rounded text-sm transition">
+                      className="bg-violet-600 hover:bg-violet-500 text-white px-3 py-1 rounded text-sm transition">
                       Histórico
                     </button>
                   </div>
@@ -234,59 +234,59 @@ export default function DeviceDetailPage({ params }: { params: Promise<{ id: str
         {/* Actuators Section */}
         <div>
           <div className="flex justify-between items-center mb-3">
-            <h2 className="text-xl font-bold text-white">Atuadores</h2>
+            <h2 className="text-xl font-bold text-slate-50">Atuadores</h2>
             <button onClick={() => setShowActuatorForm(!showActuatorForm)}
-              className="bg-blue-600 hover:bg-blue-500 text-white px-3 py-1 rounded text-sm font-bold transition">
+              className="bg-cyan-600 hover:bg-cyan-500 text-white px-3 py-1 rounded text-sm font-bold transition">
               + Atuador
             </button>
           </div>
 
           {showActuatorForm && (
-            <form onSubmit={handleCreateActuator} className="bg-gray-800 p-4 rounded-xl mb-4 flex flex-col gap-2">
+            <form onSubmit={handleCreateActuator} className="bg-slate-900 p-4 rounded-xl mb-4 flex flex-col gap-2 border border-slate-800">
               <input type="text" placeholder="Nome *" value={actuatorForm.name}
                 onChange={(e) => setActuatorForm({ ...actuatorForm, name: e.target.value })}
-                className="bg-gray-700 text-white px-3 py-2 rounded-lg outline-none focus:ring-2 focus:ring-blue-500" required />
+                className="bg-slate-800 text-slate-100 px-3 py-2 rounded-lg outline-none border border-slate-700 focus:ring-2 focus:ring-cyan-500" required />
               <input type="text" placeholder="Tipo" value={actuatorForm.type}
                 onChange={(e) => setActuatorForm({ ...actuatorForm, type: e.target.value })}
-                className="bg-gray-700 text-white px-3 py-2 rounded-lg outline-none focus:ring-2 focus:ring-blue-500" />
+                className="bg-slate-800 text-slate-100 px-3 py-2 rounded-lg outline-none border border-slate-700 focus:ring-2 focus:ring-cyan-500" />
               <input type="text" placeholder="Tipo de Sinal" value={actuatorForm.signalType}
                 onChange={(e) => setActuatorForm({ ...actuatorForm, signalType: e.target.value })}
-                className="bg-gray-700 text-white px-3 py-2 rounded-lg outline-none focus:ring-2 focus:ring-blue-500" />
+                className="bg-slate-800 text-slate-100 px-3 py-2 rounded-lg outline-none border border-slate-700 focus:ring-2 focus:ring-cyan-500" />
               <div className="flex gap-2">
                 <input type="number" step="any" placeholder="Min" value={actuatorForm.minValue}
                   onChange={(e) => setActuatorForm({ ...actuatorForm, minValue: e.target.value })}
-                  className="bg-gray-700 text-white px-3 py-2 rounded-lg outline-none focus:ring-2 focus:ring-blue-500 flex-1" />
+                  className="bg-slate-800 text-slate-100 px-3 py-2 rounded-lg outline-none border border-slate-700 focus:ring-2 focus:ring-cyan-500 flex-1" />
                 <input type="number" step="any" placeholder="Max" value={actuatorForm.maxValue}
                   onChange={(e) => setActuatorForm({ ...actuatorForm, maxValue: e.target.value })}
-                  className="bg-gray-700 text-white px-3 py-2 rounded-lg outline-none focus:ring-2 focus:ring-blue-500 flex-1" />
+                  className="bg-slate-800 text-slate-100 px-3 py-2 rounded-lg outline-none border border-slate-700 focus:ring-2 focus:ring-cyan-500 flex-1" />
               </div>
-              <button type="submit" className="bg-green-600 hover:bg-green-500 text-white px-4 py-2 rounded-lg font-bold transition">
+              <button type="submit" className="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-lg font-bold transition">
                 Criar Atuador
               </button>
             </form>
           )}
 
           {editingActuator && (
-            <form onSubmit={handleUpdateActuator} className="bg-gray-800 p-4 rounded-xl mb-4 flex flex-col gap-2 border border-yellow-600">
-              <h3 className="text-yellow-400 font-bold">Editar: {editingActuator.name}</h3>
+            <form onSubmit={handleUpdateActuator} className="bg-slate-900 p-4 rounded-xl mb-4 flex flex-col gap-2 border border-amber-600">
+              <h3 className="text-amber-400 font-bold">Editar: {editingActuator.name}</h3>
               <input type="text" placeholder="Nome *" value={actuatorEditForm.name}
                 onChange={(e) => setActuatorEditForm({ ...actuatorEditForm, name: e.target.value })}
-                className="bg-gray-700 text-white px-3 py-2 rounded-lg outline-none focus:ring-2 focus:ring-yellow-500" required />
+                className="bg-slate-800 text-slate-100 px-3 py-2 rounded-lg outline-none border border-slate-700 focus:ring-2 focus:ring-amber-500" required />
               <input type="text" placeholder="Tipo" value={actuatorEditForm.type}
                 onChange={(e) => setActuatorEditForm({ ...actuatorEditForm, type: e.target.value })}
-                className="bg-gray-700 text-white px-3 py-2 rounded-lg outline-none focus:ring-2 focus:ring-yellow-500" />
+                className="bg-slate-800 text-slate-100 px-3 py-2 rounded-lg outline-none border border-slate-700 focus:ring-2 focus:ring-amber-500" />
               <input type="text" placeholder="Tipo de Sinal" value={actuatorEditForm.signalType}
                 onChange={(e) => setActuatorEditForm({ ...actuatorEditForm, signalType: e.target.value })}
-                className="bg-gray-700 text-white px-3 py-2 rounded-lg outline-none focus:ring-2 focus:ring-yellow-500" />
+                className="bg-slate-800 text-slate-100 px-3 py-2 rounded-lg outline-none border border-slate-700 focus:ring-2 focus:ring-amber-500" />
               <input type="number" step="any" placeholder="Valor Atual" value={actuatorEditForm.currentValue}
                 onChange={(e) => setActuatorEditForm({ ...actuatorEditForm, currentValue: e.target.value })}
-                className="bg-gray-700 text-white px-3 py-2 rounded-lg outline-none focus:ring-2 focus:ring-yellow-500" />
+                className="bg-slate-800 text-slate-100 px-3 py-2 rounded-lg outline-none border border-slate-700 focus:ring-2 focus:ring-amber-500" />
               <div className="flex gap-2">
-                <button type="submit" className="bg-yellow-600 hover:bg-yellow-500 text-white px-4 py-2 rounded-lg font-bold transition">
+                <button type="submit" className="bg-amber-600 hover:bg-amber-500 text-white px-4 py-2 rounded-lg font-bold transition">
                   Atualizar
                 </button>
                 <button type="button" onClick={() => setEditingActuator(null)}
-                  className="bg-gray-600 hover:bg-gray-500 text-white px-4 py-2 rounded-lg transition">
+                  className="bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded-lg transition">
                   Cancelar
                 </button>
               </div>
@@ -294,19 +294,19 @@ export default function DeviceDetailPage({ params }: { params: Promise<{ id: str
           )}
 
           {actuators.length === 0 ? (
-            <p className="text-gray-500 text-sm">Nenhum atuador cadastrado.</p>
+            <p className="text-slate-500 text-sm">Nenhum atuador cadastrado.</p>
           ) : (
             <div className="space-y-3">
               {actuators.map((a) => (
-                <div key={a.id} className="bg-gray-800 p-4 rounded-xl border border-gray-700">
+                <div key={a.id} className="bg-slate-900 p-4 rounded-xl border border-slate-800">
                   <div className="flex justify-between items-center">
                     <div>
-                      <h3 className="text-white font-bold">{a.name}</h3>
-                      <p className="text-gray-400 text-sm">{a.type} — {a.signalType}</p>
+                      <h3 className="text-slate-50 font-bold">{a.name}</h3>
+                      <p className="text-slate-400 text-sm">{a.type} — {a.signalType}</p>
                     </div>
                     <div className="text-right">
-                      <p className="text-blue-400 font-bold text-lg">{a.currentValue ?? "—"}</p>
-                      <p className="text-gray-500 text-xs">
+                      <p className="text-cyan-400 font-bold text-lg">{a.currentValue ?? "—"}</p>
+                      <p className="text-slate-500 text-xs">
                         {a.minValue != null && a.maxValue != null ? `${a.minValue} ~ ${a.maxValue}` : ""}
                       </p>
                     </div>
@@ -321,7 +321,7 @@ export default function DeviceDetailPage({ params }: { params: Promise<{ id: str
                         currentValue: a.currentValue?.toString() || "",
                       });
                     }}
-                    className="bg-yellow-600 hover:bg-yellow-500 text-white px-3 py-1 rounded text-sm mt-3 transition"
+                    className="bg-amber-600 hover:bg-amber-500 text-white px-3 py-1 rounded text-sm mt-3 transition"
                   >
                     Editar
                   </button>
@@ -334,21 +334,21 @@ export default function DeviceDetailPage({ params }: { params: Promise<{ id: str
 
       {/* Sensor Data History */}
       {selectedSensor && (
-        <div className="mt-6 bg-gray-800 p-6 rounded-xl">
+        <div className="mt-6 bg-slate-900 p-6 rounded-xl border border-slate-800">
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-xl font-bold text-white">
+            <h2 className="text-xl font-bold text-slate-50">
               Histórico do Sensor: {sensors.find(s => s.id === selectedSensor)?.name}
             </h2>
             <button onClick={() => { setSelectedSensor(null); setSensorData(null); }}
-              className="text-gray-400 hover:text-white text-sm">Fechar</button>
+              className="text-slate-400 hover:text-slate-100 text-sm">Fechar</button>
           </div>
 
           {/* Add data form */}
           <form onSubmit={handleAddSensorData} className="flex gap-2 mb-4">
             <input type="number" step="any" placeholder="Valor" value={newDataValue}
               onChange={(e) => setNewDataValue(e.target.value)}
-              className="bg-gray-700 text-white px-3 py-2 rounded-lg outline-none focus:ring-2 focus:ring-blue-500 flex-1" required />
-            <button type="submit" className="bg-green-600 hover:bg-green-500 text-white px-4 py-2 rounded-lg font-bold transition">
+              className="bg-slate-800 text-slate-100 px-3 py-2 rounded-lg outline-none border border-slate-700 focus:ring-2 focus:ring-cyan-500 flex-1" required />
+            <button type="submit" className="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-lg font-bold transition">
               Adicionar
             </button>
           </form>
@@ -364,15 +364,15 @@ export default function DeviceDetailPage({ params }: { params: Promise<{ id: str
                   }))}>
                     <defs>
                       <linearGradient id="colorVal" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#22c55e" stopOpacity={0.3} />
-                        <stop offset="95%" stopColor="#22c55e" stopOpacity={0} />
+                        <stop offset="5%" stopColor="#06b6d4" stopOpacity={0.3} />
+                        <stop offset="95%" stopColor="#06b6d4" stopOpacity={0} />
                       </linearGradient>
                     </defs>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                    <XAxis dataKey="hora" tick={{ fill: "#9ca3af", fontSize: 11 }} />
-                    <YAxis tick={{ fill: "#9ca3af", fontSize: 11 }} />
-                    <Tooltip contentStyle={{ backgroundColor: "#1f2937", border: "1px solid #374151", borderRadius: "8px", color: "#fff" }} />
-                    <Area type="monotone" dataKey="valor" stroke="#22c55e" strokeWidth={2}
+                    <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+                    <XAxis dataKey="hora" tick={{ fill: "#94a3b8", fontSize: 11 }} />
+                    <YAxis tick={{ fill: "#94a3b8", fontSize: 11 }} />
+                    <Tooltip contentStyle={{ backgroundColor: "#0f172a", border: "1px solid #334155", borderRadius: "8px", color: "#fff" }} />
+                    <Area type="monotone" dataKey="valor" stroke="#06b6d4" strokeWidth={2}
                       fillOpacity={1} fill="url(#colorVal)" />
                   </AreaChart>
                 </ResponsiveContainer>
@@ -380,16 +380,16 @@ export default function DeviceDetailPage({ params }: { params: Promise<{ id: str
 
               <table className="w-full text-left text-sm">
                 <thead>
-                  <tr className="border-b border-gray-700">
-                    <th className="py-2 px-3 text-gray-400">Valor</th>
-                    <th className="py-2 px-3 text-gray-400">Data/Hora</th>
+                  <tr className="border-b border-slate-800">
+                    <th className="py-2 px-3 text-slate-400">Valor</th>
+                    <th className="py-2 px-3 text-slate-400">Data/Hora</th>
                   </tr>
                 </thead>
                 <tbody>
                   {sensorData.items.map((d) => (
-                    <tr key={d.id} className="border-b border-gray-800">
-                      <td className="py-2 px-3 text-white font-mono">{d.value}</td>
-                      <td className="py-2 px-3 text-gray-400">
+                    <tr key={d.id} className="border-b border-slate-800">
+                      <td className="py-2 px-3 text-slate-50 font-mono">{d.value}</td>
+                      <td className="py-2 px-3 text-slate-400">
                         {new Date(d.timestamp).toLocaleString("pt-BR")}
                       </td>
                     </tr>
@@ -397,25 +397,25 @@ export default function DeviceDetailPage({ params }: { params: Promise<{ id: str
                 </tbody>
               </table>
               <div className="flex justify-between items-center mt-4">
-                <span className="text-gray-500 text-sm">
+                <span className="text-slate-500 text-sm">
                   Página {sensorData.page} — Total: {sensorData.total}
                 </span>
                 <div className="flex gap-2">
                   <button disabled={dataPage <= 1}
                     onClick={() => loadSensorData(selectedSensor, dataPage - 1)}
-                    className="bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm disabled:opacity-30">
+                    className="bg-slate-700 hover:bg-slate-600 text-white px-3 py-1 rounded text-sm disabled:opacity-30">
                     Anterior
                   </button>
                   <button disabled={sensorData.items.length < sensorData.pageSize}
                     onClick={() => loadSensorData(selectedSensor, dataPage + 1)}
-                    className="bg-gray-700 hover:bg-gray-600 text-white px-3 py-1 rounded text-sm disabled:opacity-30">
+                    className="bg-slate-700 hover:bg-slate-600 text-white px-3 py-1 rounded text-sm disabled:opacity-30">
                     Próximo
                   </button>
                 </div>
               </div>
             </>
           ) : (
-            <p className="text-gray-500 text-sm">Nenhum dado registrado.</p>
+            <p className="text-slate-500 text-sm">Nenhum dado registrado.</p>
           )}
         </div>
       )}

@@ -34,14 +34,14 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-900">
-      <div className="bg-gray-800 p-8 rounded-xl shadow-lg w-full max-w-md">
-        <h1 className="text-2xl font-bold text-white mb-6 text-center">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-cyan-950 px-4">
+      <div className="w-full max-w-md rounded-2xl border border-slate-800 bg-slate-900/90 p-8 shadow-2xl shadow-cyan-950/30 backdrop-blur">
+        <h1 className="text-2xl font-bold text-slate-50 mb-6 text-center">
           {isRegister ? "Criar Conta" : "Login"}
         </h1>
 
         {error && (
-          <div className="bg-red-500/20 border border-red-500 text-red-300 p-3 rounded mb-4 text-sm">
+          <div className="bg-rose-500/15 border border-rose-500/40 text-rose-200 p-3 rounded mb-4 text-sm">
             {error}
           </div>
         )}
@@ -53,7 +53,7 @@ export default function LoginPage() {
               placeholder="Nome"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="bg-gray-700 text-white px-4 py-3 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+              className="bg-slate-800 text-slate-100 px-4 py-3 rounded-lg outline-none border border-slate-700 focus:ring-2 focus:ring-cyan-500"
               required
             />
           )}
@@ -62,7 +62,7 @@ export default function LoginPage() {
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="bg-gray-700 text-white px-4 py-3 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+            className="bg-slate-800 text-slate-100 px-4 py-3 rounded-lg outline-none border border-slate-700 focus:ring-2 focus:ring-cyan-500"
             required
           />
           <input
@@ -70,23 +70,23 @@ export default function LoginPage() {
             placeholder="Senha"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="bg-gray-700 text-white px-4 py-3 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+            className="bg-slate-800 text-slate-100 px-4 py-3 rounded-lg outline-none border border-slate-700 focus:ring-2 focus:ring-cyan-500"
             required
           />
           <button
             type="submit"
             disabled={loading}
-            className="bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 rounded-lg transition disabled:opacity-50"
+            className="bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 rounded-lg transition disabled:opacity-50"
           >
             {loading ? "Carregando..." : isRegister ? "Registrar" : "Entrar"}
           </button>
         </form>
 
-        <p className="text-gray-400 text-sm mt-4 text-center">
+        <p className="text-slate-400 text-sm mt-4 text-center">
           {isRegister ? "Já tem conta?" : "Não tem conta?"}{" "}
           <button
             onClick={() => { setIsRegister(!isRegister); setError(""); }}
-            className="text-blue-400 hover:underline"
+            className="text-cyan-400 hover:underline"
           >
             {isRegister ? "Fazer login" : "Criar conta"}
           </button>

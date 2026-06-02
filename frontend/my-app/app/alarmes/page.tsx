@@ -79,12 +79,12 @@ export default function AlarmesPage() {
     <div className="p-6 min-h-screen">
       <div className="flex justify-between items-center mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-white">Alarmes e Diagnóstico</h1>
-          <p className="text-gray-400 text-sm">Gerenciamento de alarmes do processo industrial</p>
+          <h1 className="text-2xl font-bold text-slate-50">Alarmes e Diagnóstico</h1>
+          <p className="text-slate-400 text-sm">Gerenciamento de alarmes do processo industrial</p>
         </div>
         {activeAlarms.length > 0 && (
           <button onClick={handleAckAll}
-            className="bg-yellow-600 hover:bg-yellow-500 text-white px-4 py-2 rounded-lg text-sm font-bold transition">
+            className="bg-amber-600 hover:bg-amber-500 text-white px-4 py-2 rounded-lg text-sm font-bold transition">
             Reconhecer Todos ({activeAlarms.length})
           </button>
         )}
@@ -92,23 +92,23 @@ export default function AlarmesPage() {
 
       {/* Summary cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-        <div className="bg-gray-800 p-4 rounded-xl border border-gray-700 text-center">
-          <p className="text-gray-400 text-xs uppercase">Total Alarmes</p>
-          <p className="text-3xl font-bold text-white">{alarms.length}</p>
+        <div className="bg-slate-900 p-4 rounded-xl border border-slate-800 text-center">
+          <p className="text-slate-400 text-xs uppercase">Total Alarmes</p>
+          <p className="text-3xl font-bold text-slate-50">{alarms.length}</p>
         </div>
-        <div className="bg-gray-800 p-4 rounded-xl border border-red-500/30 text-center">
-          <p className="text-gray-400 text-xs uppercase">Ativos</p>
+        <div className="bg-slate-900 p-4 rounded-xl border border-red-500/30 text-center">
+          <p className="text-slate-400 text-xs uppercase">Ativos</p>
           <p className={`text-3xl font-bold ${activeAlarms.length > 0 ? "text-red-400" : "text-green-400"}`}>
             {activeAlarms.length}
           </p>
         </div>
-        <div className="bg-gray-800 p-4 rounded-xl border border-yellow-500/30 text-center">
-          <p className="text-gray-400 text-xs uppercase">Reconhecidos</p>
-          <p className="text-3xl font-bold text-yellow-400">{ackedAlarms.length}</p>
+        <div className="bg-slate-900 p-4 rounded-xl border border-amber-500/30 text-center">
+          <p className="text-slate-400 text-xs uppercase">Reconhecidos</p>
+          <p className="text-3xl font-bold text-amber-400">{ackedAlarms.length}</p>
         </div>
-        <div className="bg-gray-800 p-4 rounded-xl border border-green-500/30 text-center">
-          <p className="text-gray-400 text-xs uppercase">Resolvidos</p>
-          <p className="text-3xl font-bold text-green-400">{resolvedAlarms.length}</p>
+        <div className="bg-slate-900 p-4 rounded-xl border border-emerald-500/30 text-center">
+          <p className="text-slate-400 text-xs uppercase">Resolvidos</p>
+          <p className="text-3xl font-bold text-emerald-400">{resolvedAlarms.length}</p>
         </div>
       </div>
 
@@ -125,11 +125,11 @@ export default function AlarmesPage() {
                   <p className={`font-bold text-sm ${a.priority === "ALTA" ? "text-red-400" : "text-yellow-400"}`}>
                     {a.tag} — {a.message}
                   </p>
-                  <p className="text-gray-500 text-xs">{new Date(a.timestamp).toLocaleString("pt-BR")}</p>
+                  <p className="text-slate-500 text-xs">{new Date(a.timestamp).toLocaleString("pt-BR")}</p>
                 </div>
               </div>
               <button onClick={() => handleAck(a.id)}
-                className="bg-gray-700 hover:bg-gray-600 text-white px-3 py-1.5 rounded-lg text-xs transition">
+                className="bg-slate-700 hover:bg-slate-600 text-white px-3 py-1.5 rounded-lg text-xs transition">
                 Reconhecer
               </button>
             </div>
@@ -141,33 +141,33 @@ export default function AlarmesPage() {
       <div className="flex gap-2 mb-4">
         <button onClick={() => setTab("ativos")}
           className={`px-4 py-2 rounded-lg text-sm font-bold transition ${
-            tab === "ativos" ? "bg-blue-600 text-white" : "bg-gray-800 text-gray-400 hover:text-white"
+            tab === "ativos" ? "bg-cyan-600 text-white" : "bg-slate-900 text-slate-400 hover:text-slate-100"
           }`}>
           Alarmes Atuais ({alarms.length})
         </button>
         <button onClick={() => setTab("historico")}
           className={`px-4 py-2 rounded-lg text-sm font-bold transition ${
-            tab === "historico" ? "bg-blue-600 text-white" : "bg-gray-800 text-gray-400 hover:text-white"
+            tab === "historico" ? "bg-cyan-600 text-white" : "bg-slate-900 text-slate-400 hover:text-slate-100"
           }`}>
           Histórico ({history.length})
         </button>
       </div>
 
       {/* Filters */}
-      <div className="bg-gray-800 p-4 rounded-xl border border-gray-700 mb-4 flex flex-wrap gap-4 items-center">
+      <div className="bg-slate-900 p-4 rounded-xl border border-slate-800 mb-4 flex flex-wrap gap-4 items-center">
         <div>
-          <label className="text-gray-400 text-xs uppercase block mb-1">Prioridade</label>
+          <label className="text-slate-400 text-xs uppercase block mb-1">Prioridade</label>
           <select value={filterPriority} onChange={e => setFilterPriority(e.target.value as FilterPriority)}
-            className="bg-gray-700 text-white text-sm rounded-lg px-3 py-2 border border-gray-600">
+            className="bg-slate-800 text-slate-100 text-sm rounded-lg px-3 py-2 border border-slate-700">
             <option value="TODAS">Todas</option>
             <option value="ALTA">Alta</option>
             <option value="MEDIA">Média</option>
           </select>
         </div>
         <div>
-          <label className="text-gray-400 text-xs uppercase block mb-1">Status</label>
+          <label className="text-slate-400 text-xs uppercase block mb-1">Status</label>
           <select value={filterStatus} onChange={e => setFilterStatus(e.target.value as FilterStatus)}
-            className="bg-gray-700 text-white text-sm rounded-lg px-3 py-2 border border-gray-600">
+            className="bg-slate-800 text-slate-100 text-sm rounded-lg px-3 py-2 border border-slate-700">
             <option value="TODOS">Todos</option>
             <option value="ATIVO">Ativo</option>
             <option value="RECONHECIDO">Reconhecido</option>
@@ -175,26 +175,26 @@ export default function AlarmesPage() {
           </select>
         </div>
         <div>
-          <label className="text-gray-400 text-xs uppercase block mb-1">Tag</label>
+          <label className="text-slate-400 text-xs uppercase block mb-1">Tag</label>
           <select value={filterTag} onChange={e => setFilterTag(e.target.value)}
-            className="bg-gray-700 text-white text-sm rounded-lg px-3 py-2 border border-gray-600">
+            className="bg-slate-800 text-slate-100 text-sm rounded-lg px-3 py-2 border border-slate-700">
             <option value="TODAS">Todas</option>
             {allTags.map(t => <option key={t} value={t}>{t}</option>)}
           </select>
         </div>
-        <div className="ml-auto text-gray-400 text-sm">
+        <div className="ml-auto text-slate-400 text-sm">
           {filtered.length} resultado{filtered.length !== 1 ? "s" : ""}
         </div>
       </div>
 
       {/* Table */}
-      <div className="bg-gray-800 rounded-xl border border-gray-700 overflow-hidden">
+      <div className="bg-slate-900 rounded-xl border border-slate-800 overflow-hidden">
         {loading ? (
-          <p className="text-gray-500 text-center py-16">Carregando alarmes...</p>
+          <p className="text-slate-500 text-center py-16">Carregando alarmes...</p>
         ) : filtered.length === 0 ? (
           <div className="text-center py-16">
             <p className="text-green-400 text-lg font-bold">Nenhum alarme encontrado</p>
-            <p className="text-gray-500 text-sm mt-1">
+            <p className="text-slate-500 text-sm mt-1">
               {alarms.length === 0 ? "O sistema está operando normalmente" : "Nenhum alarme corresponde aos filtros"}
             </p>
           </div>
@@ -202,21 +202,21 @@ export default function AlarmesPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-left text-sm">
               <thead>
-                <tr className="border-b border-gray-700 bg-gray-900/50">
-                  <th className="py-3 px-4 text-gray-400">Prioridade</th>
-                  <th className="py-3 px-4 text-gray-400">Tag</th>
-                  <th className="py-3 px-4 text-gray-400">Tipo</th>
-                  <th className="py-3 px-4 text-gray-400">Mensagem</th>
-                  <th className="py-3 px-4 text-gray-400">Valor</th>
-                  <th className="py-3 px-4 text-gray-400">Data/Hora</th>
-                  <th className="py-3 px-4 text-gray-400">Status</th>
-                  <th className="py-3 px-4 text-gray-400">Ação</th>
+                <tr className="border-b border-slate-800 bg-slate-950/50">
+                  <th className="py-3 px-4 text-slate-400">Prioridade</th>
+                  <th className="py-3 px-4 text-slate-400">Tag</th>
+                  <th className="py-3 px-4 text-slate-400">Tipo</th>
+                  <th className="py-3 px-4 text-slate-400">Mensagem</th>
+                  <th className="py-3 px-4 text-slate-400">Valor</th>
+                  <th className="py-3 px-4 text-slate-400">Data/Hora</th>
+                  <th className="py-3 px-4 text-slate-400">Status</th>
+                  <th className="py-3 px-4 text-slate-400">Ação</th>
                 </tr>
               </thead>
               <tbody>
                 {filtered.map(a => (
-                  <tr key={a.id} className={`border-b border-gray-800 transition ${
-                    !a.acknowledged ? "bg-red-500/5 hover:bg-red-500/10" : "hover:bg-gray-700/30"
+                  <tr key={a.id} className={`border-b border-slate-800 transition ${
+                    !a.acknowledged ? "bg-red-500/5 hover:bg-red-500/10" : "hover:bg-slate-800/40"
                   }`}>
                     <td className="py-3 px-4">
                       <span className={`px-2 py-1 rounded text-xs font-bold ${
@@ -225,13 +225,13 @@ export default function AlarmesPage() {
                     </td>
                     <td className="py-3 px-4 text-white font-bold">{a.tag}</td>
                     <td className="py-3 px-4">
-                      <span className={`text-xs ${a.type === "HIGH" ? "text-red-400" : "text-blue-400"}`}>
+                      <span className={`text-xs ${a.type === "HIGH" ? "text-red-400" : "text-cyan-400"}`}>
                         {a.type === "HIGH" ? "▲ ALTO" : "▼ BAIXO"}
                       </span>
                     </td>
-                    <td className="py-3 px-4 text-gray-400 max-w-xs truncate">{a.message}</td>
+                    <td className="py-3 px-4 text-slate-400 max-w-xs truncate">{a.message}</td>
                     <td className="py-3 px-4 text-white font-mono">{typeof a.value === "number" ? a.value.toFixed(2) : a.value}</td>
-                    <td className="py-3 px-4 text-gray-400 whitespace-nowrap">{new Date(a.timestamp).toLocaleString("pt-BR")}</td>
+                    <td className="py-3 px-4 text-slate-400 whitespace-nowrap">{new Date(a.timestamp).toLocaleString("pt-BR")}</td>
                     <td className="py-3 px-4">
                       {a.resolved ? (
                         <span className="text-green-400 text-xs font-bold">Resolvido</span>
@@ -244,7 +244,7 @@ export default function AlarmesPage() {
                     <td className="py-3 px-4">
                       {!a.acknowledged && (
                         <button onClick={() => handleAck(a.id)}
-                          className="bg-yellow-600 hover:bg-yellow-500 text-white px-2 py-1 rounded text-xs transition">
+                          className="bg-amber-600 hover:bg-amber-500 text-white px-2 py-1 rounded text-xs transition">
                           Reconhecer
                         </button>
                       )}

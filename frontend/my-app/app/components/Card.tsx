@@ -11,9 +11,9 @@ const tamanhos = {
 } as const
 
 const estilos = {
-     white: "bg-white text-black",
-     auto: "bg-auto",
-     gray: "bg-gray-500"
+     white: "bg-slate-100 text-slate-900",
+     auto: "bg-slate-900 text-slate-100",
+     gray: "bg-slate-800 text-slate-100"
 } as const
 
 

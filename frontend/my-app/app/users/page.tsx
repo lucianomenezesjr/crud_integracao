@@ -67,10 +67,10 @@ export default function UsersPage() {
   return (
     <div className="p-6">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-white">Usuários</h1>
+        <h1 className="text-2xl font-bold text-slate-50">Usuários</h1>
         <button
           onClick={() => { resetForm(); setShowForm(true); }}
-          className="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded-lg font-bold transition"
+          className="bg-cyan-600 hover:bg-cyan-500 text-white px-4 py-2 rounded-lg font-bold transition"
         >
           + Novo Usuário
         </button>
@@ -83,8 +83,8 @@ export default function UsersPage() {
       )}
 
       {showForm && (
-        <div className="bg-gray-800 p-6 rounded-xl mb-6">
-          <h2 className="text-lg font-bold text-white mb-4">
+        <div className="bg-slate-900 p-6 rounded-xl mb-6 border border-slate-800">
+          <h2 className="text-lg font-bold text-slate-50 mb-4">
             {editingUser ? "Editar Usuário" : "Novo Usuário"}
           </h2>
           <form onSubmit={handleSubmit} className="flex flex-col gap-3">
@@ -93,7 +93,7 @@ export default function UsersPage() {
               placeholder="Nome"
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
-              className="bg-gray-700 text-white px-4 py-2 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+              className="bg-slate-800 text-slate-100 px-4 py-2 rounded-lg outline-none border border-slate-700 focus:ring-2 focus:ring-cyan-500"
               required
             />
             <input
@@ -101,7 +101,7 @@ export default function UsersPage() {
               placeholder="Email"
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
-              className="bg-gray-700 text-white px-4 py-2 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+              className="bg-slate-800 text-slate-100 px-4 py-2 rounded-lg outline-none border border-slate-700 focus:ring-2 focus:ring-cyan-500"
               required
             />
             <input
@@ -109,14 +109,14 @@ export default function UsersPage() {
               placeholder={editingUser ? "Nova senha (opcional)" : "Senha"}
               value={form.password}
               onChange={(e) => setForm({ ...form, password: e.target.value })}
-              className="bg-gray-700 text-white px-4 py-2 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+              className="bg-slate-800 text-slate-100 px-4 py-2 rounded-lg outline-none border border-slate-700 focus:ring-2 focus:ring-cyan-500"
               {...(!editingUser && { required: true })}
             />
             <div className="flex gap-2">
-              <button type="submit" className="bg-green-600 hover:bg-green-500 text-white px-4 py-2 rounded-lg font-bold transition">
+              <button type="submit" className="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-lg font-bold transition">
                 {editingUser ? "Atualizar" : "Criar"}
               </button>
-              <button type="button" onClick={resetForm} className="bg-gray-600 hover:bg-gray-500 text-white px-4 py-2 rounded-lg transition">
+              <button type="button" onClick={resetForm} className="bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded-lg transition">
                 Cancelar
               </button>
             </div>
@@ -125,28 +125,28 @@ export default function UsersPage() {
       )}
 
       {loading ? (
-        <p className="text-gray-400">Carregando...</p>
+        <p className="text-slate-400">Carregando...</p>
       ) : users.length === 0 ? (
-        <p className="text-gray-400">Nenhum usuário encontrado.</p>
+        <p className="text-slate-400">Nenhum usuário encontrado.</p>
       ) : (
         <div className="overflow-x-auto">
           <table className="w-full text-left">
             <thead>
-              <tr className="border-b border-gray-700">
-                <th className="py-3 px-4 text-gray-400 font-semibold">ID</th>
-                <th className="py-3 px-4 text-gray-400 font-semibold">Nome</th>
-                <th className="py-3 px-4 text-gray-400 font-semibold">Email</th>
-                <th className="py-3 px-4 text-gray-400 font-semibold">Criado em</th>
-                <th className="py-3 px-4 text-gray-400 font-semibold">Ações</th>
+              <tr className="border-b border-slate-800">
+                <th className="py-3 px-4 text-slate-400 font-semibold">ID</th>
+                <th className="py-3 px-4 text-slate-400 font-semibold">Nome</th>
+                <th className="py-3 px-4 text-slate-400 font-semibold">Email</th>
+                <th className="py-3 px-4 text-slate-400 font-semibold">Criado em</th>
+                <th className="py-3 px-4 text-slate-400 font-semibold">Ações</th>
               </tr>
             </thead>
             <tbody>
               {users.map((u) => (
-                <tr key={u.id} className="border-b border-gray-800 hover:bg-gray-800/50">
-                  <td className="py-3 px-4 text-white">{u.id}</td>
-                  <td className="py-3 px-4 text-white">{u.name}</td>
-                  <td className="py-3 px-4 text-white">{u.email}</td>
-                  <td className="py-3 px-4 text-gray-400">{new Date(u.createdAt).toLocaleDateString("pt-BR")}</td>
+                <tr key={u.id} className="border-b border-slate-800 hover:bg-slate-900/50">
+                  <td className="py-3 px-4 text-slate-50">{u.id}</td>
+                  <td className="py-3 px-4 text-slate-50">{u.name}</td>
+                  <td className="py-3 px-4 text-slate-50">{u.email}</td>
+                  <td className="py-3 px-4 text-slate-400">{new Date(u.createdAt).toLocaleDateString("pt-BR")}</td>
                   <td className="py-3 px-4 flex gap-2">
                     <button onClick={() => handleEdit(u)} className="bg-yellow-600 hover:bg-yellow-500 text-white px-3 py-1 rounded text-sm transition">
                       Editar

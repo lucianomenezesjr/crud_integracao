@@ -19,9 +19,9 @@ export default function Navbar() {
   if (!user) return null;
 
   return (
-    <nav className="bg-gray-800 border-b border-gray-700 px-6 py-3 flex items-center justify-between">
+    <nav className="bg-slate-900/90 border-b border-slate-800 px-6 py-3 flex items-center justify-between backdrop-blur">
       <div className="flex items-center gap-6">
-        <Link href="/" className="text-white font-bold text-lg">IFACI</Link>
+        <Link href="/" className="text-slate-100 font-bold text-lg tracking-wide">IFACI</Link>
         <div className="flex gap-1">
           {navItems.map((item) => (
             <Link
@@ -29,8 +29,8 @@ export default function Navbar() {
               href={item.href}
               className={`px-3 py-2 rounded-lg text-sm transition ${
                 pathname === item.href
-                  ? "bg-blue-600 text-white"
-                  : "text-gray-400 hover:text-white hover:bg-gray-700"
+                  ? "bg-cyan-600 text-white"
+                  : "text-slate-400 hover:text-slate-100 hover:bg-slate-800"
               }`}
             >
               {item.label}
@@ -39,10 +39,10 @@ export default function Navbar() {
         </div>
       </div>
       <div className="flex items-center gap-4">
-        <span className="text-gray-400 text-sm">{user.name}</span>
+        <span className="text-slate-400 text-sm">{user.name}</span>
         <button
           onClick={logout}
-          className="text-red-400 hover:text-red-300 text-sm transition"
+          className="text-rose-400 hover:text-rose-300 text-sm transition"
         >
           Sair
         </button>

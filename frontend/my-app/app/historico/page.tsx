@@ -81,27 +81,27 @@ export default function HistoricoPage() {
     <div className="p-6 min-h-screen">
       <div className="flex justify-between items-center mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-white">Histórico de Processo</h1>
-          <p className="text-gray-400 text-sm">Visualização de tendências e dados históricos</p>
+          <h1 className="text-2xl font-bold text-slate-50">Histórico de Processo</h1>
+          <p className="text-slate-400 text-sm">Visualização de tendências e dados históricos</p>
         </div>
         {status && (
-          <div className="text-right text-sm text-gray-400">
-            <p>Total de leituras: <span className="text-white font-bold">{status.totalReadings}</span></p>
-            <p>Tags monitoradas: <span className="text-white font-bold">{status.tags.length}</span></p>
+          <div className="text-right text-sm text-slate-400">
+            <p>Total de leituras: <span className="text-slate-50 font-bold">{status.totalReadings}</span></p>
+            <p>Tags monitoradas: <span className="text-slate-50 font-bold">{status.tags.length}</span></p>
           </div>
         )}
       </div>
 
       {/* Controls */}
-      <div className="bg-gray-800 p-4 rounded-xl border border-gray-700 mb-6 flex flex-wrap gap-4 items-center">
+      <div className="bg-slate-900 p-4 rounded-xl border border-slate-800 mb-6 flex flex-wrap gap-4 items-center">
         <div>
-          <label className="text-gray-400 text-xs uppercase tracking-wide block mb-1">Tag</label>
+          <label className="text-slate-400 text-xs uppercase tracking-wide block mb-1">Tag</label>
           <div className="flex gap-2">
             {TAGS.map(t => (
               <button key={t.key} onClick={() => setSelectedTag(t.key)}
                 className={`px-4 py-2 rounded-lg text-sm font-bold transition ${
                   selectedTag === t.key
-                    ? "text-white" : "bg-gray-700 text-gray-400 hover:text-white"
+                    ? "text-white" : "bg-slate-800 text-slate-400 hover:text-slate-100"
                 }`}
                 style={selectedTag === t.key ? { backgroundColor: t.color } : undefined}
               >
@@ -112,13 +112,13 @@ export default function HistoricoPage() {
         </div>
 
         <div>
-          <label className="text-gray-400 text-xs uppercase tracking-wide block mb-1">Período</label>
+          <label className="text-slate-400 text-xs uppercase tracking-wide block mb-1">Período</label>
           <div className="flex gap-2">
             {PERIODS.map(p => (
               <button key={p.value} onClick={() => setPeriod(p.value)}
                 className={`px-3 py-2 rounded-lg text-sm transition ${
                   period === p.value
-                    ? "bg-blue-600 text-white" : "bg-gray-700 text-gray-400 hover:text-white"
+                    ? "bg-cyan-600 text-white" : "bg-slate-800 text-slate-400 hover:text-slate-100"
                 }`}
               >
                 {p.label}
@@ -128,15 +128,15 @@ export default function HistoricoPage() {
         </div>
 
         <div>
-          <label className="text-gray-400 text-xs uppercase tracking-wide block mb-1">Tipo</label>
+          <label className="text-slate-400 text-xs uppercase tracking-wide block mb-1">Tipo</label>
           <div className="flex gap-2">
             <button onClick={() => setChartType("area")}
               className={`px-3 py-2 rounded-lg text-sm transition ${
-                chartType === "area" ? "bg-blue-600 text-white" : "bg-gray-700 text-gray-400 hover:text-white"
+                chartType === "area" ? "bg-cyan-600 text-white" : "bg-slate-800 text-slate-400 hover:text-slate-100"
               }`}>Área</button>
             <button onClick={() => setChartType("line")}
               className={`px-3 py-2 rounded-lg text-sm transition ${
-                chartType === "line" ? "bg-blue-600 text-white" : "bg-gray-700 text-gray-400 hover:text-white"
+                chartType === "line" ? "bg-cyan-600 text-white" : "bg-slate-800 text-slate-400 hover:text-slate-100"
               }`}>Linha</button>
           </div>
         </div>
@@ -144,27 +144,27 @@ export default function HistoricoPage() {
 
       {/* Stats */}
       <div className="grid grid-cols-3 gap-4 mb-6">
-        <div className="bg-gray-800 p-4 rounded-xl border border-gray-700 text-center">
-          <p className="text-gray-400 text-xs uppercase">Mínimo</p>
-          <p className="text-2xl font-bold text-blue-400">{values.length ? min.toFixed(2) : "---"} <span className="text-sm text-gray-500">{tagConfig.unit}</span></p>
+        <div className="bg-slate-900 p-4 rounded-xl border border-slate-800 text-center">
+          <p className="text-slate-400 text-xs uppercase">Mínimo</p>
+          <p className="text-2xl font-bold text-cyan-400">{values.length ? min.toFixed(2) : "---"} <span className="text-sm text-slate-500">{tagConfig.unit}</span></p>
         </div>
-        <div className="bg-gray-800 p-4 rounded-xl border border-gray-700 text-center">
-          <p className="text-gray-400 text-xs uppercase">Média</p>
-          <p className="text-2xl font-bold text-yellow-400">{values.length ? avg.toFixed(2) : "---"} <span className="text-sm text-gray-500">{tagConfig.unit}</span></p>
+        <div className="bg-slate-900 p-4 rounded-xl border border-slate-800 text-center">
+          <p className="text-slate-400 text-xs uppercase">Média</p>
+          <p className="text-2xl font-bold text-amber-400">{values.length ? avg.toFixed(2) : "---"} <span className="text-sm text-slate-500">{tagConfig.unit}</span></p>
         </div>
-        <div className="bg-gray-800 p-4 rounded-xl border border-gray-700 text-center">
-          <p className="text-gray-400 text-xs uppercase">Máximo</p>
-          <p className="text-2xl font-bold text-red-400">{values.length ? max.toFixed(2) : "---"} <span className="text-sm text-gray-500">{tagConfig.unit}</span></p>
+        <div className="bg-slate-900 p-4 rounded-xl border border-slate-800 text-center">
+          <p className="text-slate-400 text-xs uppercase">Máximo</p>
+          <p className="text-2xl font-bold text-rose-400">{values.length ? max.toFixed(2) : "---"} <span className="text-sm text-slate-500">{tagConfig.unit}</span></p>
         </div>
       </div>
 
       {/* Chart */}
-      <div className="bg-gray-800 p-5 rounded-xl border border-gray-700 mb-6">
-        <h2 className="text-lg font-bold text-white mb-4">
+      <div className="bg-slate-900 p-5 rounded-xl border border-slate-800 mb-6">
+        <h2 className="text-lg font-bold text-slate-50 mb-4">
           {selectedTag} ({tagConfig.unit}) — últimas {chartData.length} leituras
         </h2>
         {loading ? (
-          <p className="text-gray-500 text-center py-16">Carregando...</p>
+          <p className="text-slate-500 text-center py-16">Carregando...</p>
         ) : chartData.length > 0 ? (
           <ResponsiveContainer width="100%" height={400}>
             {chartType === "area" ? (
@@ -175,11 +175,11 @@ export default function HistoricoPage() {
                     <stop offset="95%" stopColor={tagConfig.color} stopOpacity={0} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                <XAxis dataKey="hora" tick={{ fill: "#9ca3af", fontSize: 10 }} interval="preserveStartEnd" />
-                <YAxis tick={{ fill: "#9ca3af" }} />
+                    <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+                    <XAxis dataKey="hora" tick={{ fill: "#94a3b8", fontSize: 10 }} interval="preserveStartEnd" />
+                    <YAxis tick={{ fill: "#94a3b8" }} />
                 <Tooltip
-                  contentStyle={{ backgroundColor: "#1f2937", border: "1px solid #374151", borderRadius: "8px", color: "#fff" }}
+                  contentStyle={{ backgroundColor: "#0f172a", border: "1px solid #334155", borderRadius: "8px", color: "#fff" }}
                   formatter={(value: number) => [`${value.toFixed(2)} ${tagConfig.unit}`, selectedTag]}
                 />
                 <Area type="monotone" dataKey="valor" stroke={tagConfig.color} strokeWidth={2}
@@ -187,11 +187,11 @@ export default function HistoricoPage() {
               </AreaChart>
             ) : (
               <LineChart data={chartData}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#374151" />
-                <XAxis dataKey="hora" tick={{ fill: "#9ca3af", fontSize: 10 }} interval="preserveStartEnd" />
-                <YAxis tick={{ fill: "#9ca3af" }} />
+                <CartesianGrid strokeDasharray="3 3" stroke="#334155" />
+                <XAxis dataKey="hora" tick={{ fill: "#94a3b8", fontSize: 10 }} interval="preserveStartEnd" />
+                <YAxis tick={{ fill: "#94a3b8" }} />
                 <Tooltip
-                  contentStyle={{ backgroundColor: "#1f2937", border: "1px solid #374151", borderRadius: "8px", color: "#fff" }}
+                  contentStyle={{ backgroundColor: "#0f172a", border: "1px solid #334155", borderRadius: "8px", color: "#fff" }}
                   formatter={(value: number) => [`${value.toFixed(2)} ${tagConfig.unit}`, selectedTag]}
                 />
                 <Line type="monotone" dataKey="valor" stroke={tagConfig.color} strokeWidth={2} dot={false} />
@@ -199,33 +199,33 @@ export default function HistoricoPage() {
             )}
           </ResponsiveContainer>
         ) : (
-          <p className="text-gray-500 text-sm text-center py-16">Nenhum dado histórico disponível. Aguardando dados do OPC-UA...</p>
+              <p className="text-slate-500 text-sm text-center py-16">Nenhum dado histórico disponível. Aguardando dados do OPC-UA...</p>
         )}
       </div>
 
       {/* Data table */}
       {data.length > 0 && (
-        <div className="bg-gray-800 p-5 rounded-xl border border-gray-700">
-          <h2 className="text-lg font-bold text-white mb-4">Dados Brutos — últimos 20 registros</h2>
+        <div className="bg-slate-900 p-5 rounded-xl border border-slate-800">
+          <h2 className="text-lg font-bold text-slate-50 mb-4">Dados Brutos — últimos 20 registros</h2>
           <div className="overflow-x-auto">
             <table className="w-full text-left text-sm">
               <thead>
-                <tr className="border-b border-gray-700">
-                  <th className="py-2 px-3 text-gray-400">#</th>
-                  <th className="py-2 px-3 text-gray-400">Data/Hora</th>
-                  <th className="py-2 px-3 text-gray-400">Valor</th>
-                  <th className="py-2 px-3 text-gray-400">Unidade</th>
-                  <th className="py-2 px-3 text-gray-400">Node ID</th>
+                <tr className="border-b border-slate-800">
+                  <th className="py-2 px-3 text-slate-400">#</th>
+                  <th className="py-2 px-3 text-slate-400">Data/Hora</th>
+                  <th className="py-2 px-3 text-slate-400">Valor</th>
+                  <th className="py-2 px-3 text-slate-400">Unidade</th>
+                  <th className="py-2 px-3 text-slate-400">Node ID</th>
                 </tr>
               </thead>
               <tbody>
                 {data.slice(-20).reverse().map((d, i) => (
-                  <tr key={i} className="border-b border-gray-800">
-                    <td className="py-2 px-3 text-gray-500">{data.length - i}</td>
-                    <td className="py-2 px-3 text-white">{new Date(d.timestamp).toLocaleString("pt-BR")}</td>
-                    <td className="py-2 px-3 text-white font-mono">{Number(d.valor).toFixed(2)}</td>
-                    <td className="py-2 px-3 text-gray-400">{d.unidade}</td>
-                    <td className="py-2 px-3 text-gray-500 font-mono">{d.nodeId}</td>
+                  <tr key={i} className="border-b border-slate-800">
+                    <td className="py-2 px-3 text-slate-500">{data.length - i}</td>
+                    <td className="py-2 px-3 text-slate-50">{new Date(d.timestamp).toLocaleString("pt-BR")}</td>
+                    <td className="py-2 px-3 text-slate-50 font-mono">{Number(d.valor).toFixed(2)}</td>
+                    <td className="py-2 px-3 text-slate-400">{d.unidade}</td>
+                    <td className="py-2 px-3 text-slate-500 font-mono">{d.nodeId}</td>
                   </tr>
                 ))}
               </tbody>
